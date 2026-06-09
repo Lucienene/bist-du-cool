@@ -27,7 +27,7 @@ body {
   background-color: var(--bg-dark);
   color: white;
   font-family: var(--font-mono);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* Grid background */
