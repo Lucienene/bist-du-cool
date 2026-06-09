@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import './App.css'
 
 type VerdictType = 'cool' | 'not-cool'
@@ -85,6 +85,8 @@ export default function App() {
 
   const verdictClass = verdict?.type ?? 'idle'
   const showBar = phase === 'result' && verdict !== null
+  const scoreLabel = showBar ? `${verdict.score}%` : '—'
+  const barFillWidth = showBar ? `${barWidth}%` : '0%'
 
   return (
     <>
@@ -140,12 +142,12 @@ export default function App() {
           <div className="coolness-bar-wrapper">
             <div className="coolness-bar-label">
               <span>Coolness Level</span>
-              <span>{showBar ? `${verdict!.score}%` : '—'}</span>
+              <span>{scoreLabel}</span>
             </div>
             <div className="coolness-bar-track">
               <div
                 className={`coolness-bar-fill ${showBar ? verdictClass : 'idle'}`}
-                style={{ width: showBar ? `${barWidth}%` : '0%' }}
+                style={{ width: barFillWidth }}
               />
             </div>
           </div>
